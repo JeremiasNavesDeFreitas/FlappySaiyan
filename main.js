@@ -30,7 +30,7 @@ let scoreText;
 
 function preload() {
   this.load.image('background', backgroundImg);
-  //this.load.image('bird', birdImg);
+  this.load.image('bird', birdImg);
   //this.load.image('pipe', pipeImg);
 }
 
