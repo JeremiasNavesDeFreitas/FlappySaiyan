@@ -1,12 +1,12 @@
 import Phaser from 'phaser';
-import backgroundImg from './assets/kame.png';
-//import birdImg from './assets/bird.png';
+import backgroundImg from './assets/background.png';
+import birdImg from './assets/bird.png';
 //import pipeImg from './assets/pipe.png';
 
 const config = {
   type: Phaser.AUTO,
-  width: 1280,
-  height: 720,
+  width: 288,
+  height: 512,
   physics: {
     default: 'arcade',
     arcade: {
@@ -29,13 +29,13 @@ let score = 0;
 let scoreText;
 
 function preload() {
-  this.load.image('kame', backgroundImg);
-  this.load.image('bird', birdImg);
-  this.load.image('pipe', pipeImg);
+  this.load.image('background', backgroundImg);
+  //this.load.image('bird', birdImg);
+  //this.load.image('pipe', pipeImg);
 }
 
 function create() {
-  this.add.image(0, 0, 'kame').setOrigin(0, 0);
+  this.add.image(0, 0, 'background').setOrigin(0, 0);
 
   bird = this.physics.add.sprite(50, 250, 'bird');
   bird.setCollideWorldBounds(true);
