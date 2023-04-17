@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import backgroundImg from './assets/background.png';
-import birdImg from './assets/bird.png';
-//import pipeImg from './assets/pipe.png';
+import gokuImg from './assets/goku.png';
+import pipeImg from './assets/pipe.png';
 
 const config = {
   type: Phaser.AUTO,
@@ -23,23 +23,23 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-let bird;
+let goku;
 let pipes;
 let score = 0;
 let scoreText;
 
 function preload() {
   this.load.image('background', backgroundImg);
-  this.load.image('bird', birdImg);
-  //this.load.image('pipe', pipeImg);
+  this.load.image('goku', gokuImg);
+  this.load.image('pipe', pipeImg);
 }
 
 function create() {
   this.add.image(0, 0, 'background').setOrigin(0, 0);
 
-  bird = this.physics.add.sprite(50, 250, 'bird');
-  bird.setCollideWorldBounds(true);
-  bird.setBounce(0.2);
+  goku = this.physics.add.sprite(50, 250, 'goku');
+  goku.setCollideWorldBounds(true);
+  goku.setBounce(0.2);
 
   pipes = this.physics.add.group({
     immovable: true,
@@ -62,16 +62,16 @@ function create() {
 }
 
 function update() {
-  if (bird.y > game.config.height - bird.height / 2) {
+  if (goku.y > game.config.height - goku.height / 2) {
     restartGame();
     return;
   }
 
-  this.physics.world.overlap(bird, pipes, hitPipe, null, this);
+  this.physics.world.overlap(goku, pipes, hitPipe, null, this);
 }
 
 function flap() {
-  bird.setVelocityY(-400);
+  goku.setVelocityY(-400);
 }
 
 function createPipe() {
@@ -100,7 +100,7 @@ function hitPipe() {
 function restartGame() {
   score = 0;
   scoreText.setText(`Score: ${score}`);
-  bird.setPosition(50, 250);
-  bird.setVelocity(0);
+  goku.setPosition(50, 250);
+  goku.setVelocity(0);
   pipes.clear(true, true);
 }
